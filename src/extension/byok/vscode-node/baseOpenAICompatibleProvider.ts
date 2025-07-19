@@ -25,10 +25,12 @@ export abstract class BaseOpenAICompatibleLMProvider implements LanguageModelCha
 		private _knownModels: BYOKKnownModels | undefined,
 		private readonly _byokStorageService: IBYOKStorageService,
 		@IFetcherService protected readonly _fetcherService: IFetcherService,
-		@ILogService private readonly _logService: ILogService,
-		@IInstantiationService private readonly _instantiationService: IInstantiationService,
-	) {
-		this._lmWrapper = this._instantiationService.createInstance(CopilotLanguageModelWrapper);
+		@ILogService protected readonly _logService: ILogService,
+		@IInstantiationService protected readonly _instantiationService: IInstantiationService,
+	) { }
+
+	updateKnownModelsList(knownModels: BYOKKnownModels | undefined): void {
+		this._knownModels = knownModels;
 	}
 
 	protected async getModelInfo(modelId: string, apiKey: string | undefined, modelCapabilities?: BYOKModelCapabilities): Promise<IChatModelInformation> {

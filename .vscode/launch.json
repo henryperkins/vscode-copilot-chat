@@ -246,29 +246,38 @@
 			}
 		},
 		{
-			"name": "Attach to TypeScript Server",
-			"type": "node",
-			"request": "attach",
-			"port": 9223,
+			"type": "extensionHost",
+			"request": "launch",
+			"name": "Launch Copilot Extension - Azure Responses Debug",
+			"runtimeExecutable": "${execPath}",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			],
+			"smartStep": true,
+			"sourceMaps": true,
+			"envFile": "${workspaceFolder}/.env",
+			"env": {
+				"COPILOT_LOG_TELEMETRY": "true",
+				"VSCODE_DEV_DEBUG": "1",
+				"AZURE_OPENAI_DEBUG": "true",
+				"AZURE_RESPONSES_API_DEBUG": "true",
+				"COPILOT_DEBUG_AZURE_RESPONSES": "true"
+			},
 			"outFiles": [
-				"${workspaceFolder}/node_modules/@vscode/copilot-typescript-server-plugin/dist/**/*.js",
+				"${workspaceFolder}/dist/**/*.js",
+				"!**/node_modules/**"
 			],
 			"presentation": {
 				"group": "2_launch"
 			}
-		}
-	],
-	"compounds": [
+		},
 		{
-			"name": "Simulation Workbench",
-			"configurations": [
-				"Simulation Workbench - Main process",
-				"Simulation Workbench - Renderer process"
-			],
-			"stopAll": true,
-			"presentation": {
-				"group": "1_launch"
-			}
+			"name": "Attach to TypeScript Server",
+			"type": "node",
+			"request": "attach",
+			"port": 6004,
+			"localRoot": "${workspaceFolder}",
+			"remoteRoot": "${workspaceFolder}"
 		}
 	]
 }
