@@ -14,7 +14,7 @@ import { Disposable } from '../../../util/vs/base/common/lifecycle';
 import { IInstantiationService } from '../../../util/vs/platform/instantiation/common/instantiation';
 import { BYOKAuthType, BYOKKnownModels, BYOKModelConfig, BYOKModelRegistry, isBYOKEnabled } from '../../byok/common/byokProvider';
 import { AnthropicBYOKModelRegistry } from '../../byok/vscode-node/anthropicProvider';
-import { AzureBYOKModelRegistry } from '../../byok/vscode-node/azureProvider';
+import { AzureBYOKModelRegistry } from './azureProvider';
 import { OAIBYOKModelRegistry } from '../../byok/vscode-node/openAIProvider';
 import { IExtensionContribution } from '../../common/contributions';
 import { BYOKStorageService, IBYOKStorageService } from './byokStorageService';

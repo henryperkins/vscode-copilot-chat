@@ -23,8 +23,8 @@ export abstract class BaseOpenAICompatibleBYOKRegistry implements BYOKModelRegis
 		public readonly name: string,
 		private readonly _baseUrl: string,
 		@IFetcherService protected readonly _fetcherService: IFetcherService,
-		@ILogService private readonly _logService: ILogService,
-		@IInstantiationService private readonly _instantiationService: IInstantiationService,
+		@ILogService protected readonly _logService: ILogService,
+		@IInstantiationService protected readonly _instantiationService: IInstantiationService,
 	) { }
 
 	updateKnownModelsList(knownModels: BYOKKnownModels | undefined): void {
